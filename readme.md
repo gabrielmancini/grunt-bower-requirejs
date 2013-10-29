@@ -71,6 +71,29 @@ Type: `String`
 
 Generate paths relative to a specific directory. This option is for anyone **not** using `data-main` who wishes to set their own base.
 
+#### pathFromTo
+
+Default: `null`  
+Type: `Object`
+
+``` js
+{
+	from: 'bower_components', to: 'components'						
+}
+```
+
+Override path of components like this:
+
+``` js
+{
+	options: {
+		pathFromTo: {
+			from: 'bower_components', to: 'components'						
+		}
+	},
+	rjsConfig: 'tmp/pathfromto.js'
+}
+```
 
 ## Things to remember
 

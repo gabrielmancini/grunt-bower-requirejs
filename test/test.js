@@ -49,5 +49,14 @@ exports.bowerRJS = {
 		test.deepEqual(actual, expected, 'should wireup Bower components relative to baseUrl');
 
 		test.done();
+	},
+	wireupComponentPathFromTo: function (test) {
+		test.expect(1);
+
+		var actual = jsonify(grunt.file.read('tmp/pathfromto.js'));
+		var expected = jsonify(grunt.file.read('test/fixtures/pathfromto-expected.js'));
+		test.deepEqual(actual, expected, 'should wireup Bower components with from to option');
+
+		test.done();
 	}
 };

@@ -41,6 +41,7 @@ module.exports = function (grunt) {
 		var excludes = this.options({exclude: []}).exclude;
 		var configDir = path.dirname(this.data.rjsConfig);
 		var baseUrl = this.options({ baseUrl: configDir }).baseUrl;
+		var pathFromTo = this.options().pathFromTo;
 		var filePath = this.data.rjsConfig;
 		var file = grunt.file.read(filePath);
 
@@ -144,11 +145,19 @@ module.exports = function (grunt) {
 										var newKey = filterName(path.basename(jspath), 'js', 'min');
 
 										obj[newKey] = normalizePath(jspath);
+
+										if (pathFromTo) {
+											obj[newKey] = obj[newKey].replace('../'+pathFromTo.from, pathFromTo.to)
+										}
 									});
 								// if there was only one js file create a path
 								// using the key
 								} else {
 									obj[key] = normalizePath(path.relative(baseUrl, jsfiles[0]));
+
+									if (pathFromTo) {
+										obj[key] = obj[key].replace('../'+pathFromTo.from, pathFromTo.to)
+									}
 								}
 							});
 

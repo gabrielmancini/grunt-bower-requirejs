@@ -49,6 +49,14 @@ module.exports = function (grunt) {
 					baseUrl: './'
 				},
 				rjsConfig: 'tmp/baseurl.js'
+			},
+			pathFromTo: {
+				options: {
+					pathFromTo: {
+						from: 'bower_components', to: 'components'						
+					}
+				},
+				rjsConfig: 'tmp/pathfromto.js'
 			}
 		}
 	});
